@@ -1,7 +1,10 @@
 #langchain core
-
+langchain-classic
 langchain
 langchain-core
+pydantic
+pydantic[email]
+
 
 #OpenAI Integrations 
 langchain-openai

@@ -4,12 +4,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-ll, = HuggingFaceEndpoint(
+llm = HuggingFaceEndpoint(
     repo_id="deepseek-ai/DeepSeek-V3-0324",
     temperature=0.7, max_new_tokens=500,
     task="text-generation")
 
-model = ChatHuggingFace(llm=ll) 
+model = ChatHuggingFace(llm=llm) 
 
 chat_prompt = ChatPromptTemplate.from_messages([
     ("system", "You are a helpful {domain}assistant."),
