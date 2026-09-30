@@ -13,3 +13,12 @@ class Fake_llm:
             "The product is okay and I am neutral about it"
         ]
         return random.choice(response_list)
+
+
+class fake_promptTemplate:
+    def __init__(self, template:str, input_variables):
+        self.template = template
+        self.input_variables = input_variables
+
+    def format(self , input_dict):
+        return self.template.format(**input_dict)
