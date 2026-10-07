@@ -4,6 +4,9 @@ langchain
 langchain-core
 pydantic
 pydantic[email]
+langchain-community
+beautifulsoup4
+pypdf   
 
 
 #OpenAI Integrations 
