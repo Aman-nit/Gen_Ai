@@ -1,0 +1,47 @@
+from langchain_text_splitters import RecursiveCharacterTextSplitter, Language
+
+"""
+this is the same recursive character text splitter that is used in the length_based.py file, but it is used here to split text into chunks based on a specified length and overlap. The RecursiveCharacterTextSplitter is a more advanced version of the CharacterTextSplitter that allows for more control over how the text is split.
+here we gonna split the code and other langauge not just normal english para or text 
+
+"""
+
+text ="""
+from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
+from typing import TypedDict ,Annotated, Optional,Literal
+from dotenv import load_dotenv
+
+load_dotenv()
+
+llm= HuggingFaceEndpoint(
+    repo_id="deepseek-ai/DeepSeek-V3-0324",
+    temperature=0.7,
+    task="text-generation")
+
+model = ChatHuggingFace(llm=llm)
+
+#Schema 
+class ChatInput(TypedDict):
+    key_themes: Annotated[list[str], "Write down all the key themes discussed in the reviews in a list."]
+    summary: Annotated[str, "A brief summary of the text"]
+    sentiment: Annotated[Literal["positive", "negative", "neutral"], "The sentiment of the text"]
+    pros: Annotated[Optional[list[str]], "List of positive aspects mentioned in the text, if any."] 
+    cons: Annotated[Optional[list[str]], "List of negative aspects mentioned in the text, if any."]
+    name: Annotated[Optional[str], "name of the reviewer, if mentioned in the text."]
+
+structured_model = model.with_structured_output(ChatInput)
+
+result = structured_model.invoke("processor is snapdragon 8 gen 2, camera is 200mp, display is 6.8 inch, battery is 5000mah, os is android 13, ram is 12gb, storage is 256gb, price is 69999rs. The phone has a good camera and display but the battery life is average. Overall, it is a good phone for its price.")
+
+print(result)  
+"""
+
+splitter = RecursiveCharacterTextSplitter.from_language(
+    language=Language.PYTHON,
+    chunk_size=300,
+    chunk_overlap=0
+)
+result = splitter.split_text(text)
+
+print(len(result))
+print(result[0])
