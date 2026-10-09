@@ -1,0 +1,5 @@
+Machine learning enables computers to learn patterns from data.
+Deep learning uses neural networks with multiple layers.
+FAISS is a library for efficient similarity search over vectors.
+LangChain helps developers build applications using language models.
+
