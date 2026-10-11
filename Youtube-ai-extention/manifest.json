@@ -1,0 +1,12 @@
+
+{
+  "manifest_version": 3,
+  "name": "YouTube AI Lecture Assistant",
+  "version": "1.0.0",
+  "description": "Detect the current YouTube video",
+  "permissions": ["activeTab"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "YouTube AI Assistant"
+  }
+}
